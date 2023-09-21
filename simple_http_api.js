@@ -28,10 +28,29 @@ const server = http.createServer((req, res) => {
 
 // implement get method on 
 function getData(req, res) {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.write(JSON.stringify({ data }));
-    res.end();
+    const reqURL = req.url;
+    const urlParts = reqURL.split('/');
+    const itemId = parseInt(urlParts.pop()); // Extract the last part of the URL as the item ID
+
+    if (!itemId) {
+        // If no ID is provided, return the entire dataset
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(data));
+        return;
+    }
+
+    // Find the item in your data array based on the ID
+    const item = data.find((item) => item.id === itemId);
+
+    if (item) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(item));
+    } else {
+        res.writeHead(404, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: 'Item not found' }));
+    }
 }
+
 // implement post method on 
 function postData(req, res) {
     let body = '';
