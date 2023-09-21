@@ -13,7 +13,7 @@
 <br/>
 
 ## Stage 1:
-- Inital setup & initialization project with npm and modules
+-* Inital setup & initialization project with npm and modules 
 - create a basic api server with one or two end points without using express
 - create a same server using express
 - integrate '.env' file and mongodb configuration and conect to database
