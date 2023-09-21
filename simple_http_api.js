@@ -1,6 +1,7 @@
 const http = require('http'); // [Note-01]
 const fs = require('fs'); // [Note-02]
-const data = require('./dataset.json'); //
+const data = require('./dataset.json'); // import json file
+
 
 // [note-03]
 const server = http.createServer((req, res) => {
