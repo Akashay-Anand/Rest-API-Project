@@ -16,10 +16,11 @@
 - [X] Inital setup & initialization project with npm and modules 
 - [X] create a basic api server with one or two end points without using express
 - [x] create a same server using express
-- [ ] Perform CRUD operations on it
+- [x] Perform CRUD operations on express
 
 
 ## Stage 2: 
+- [ ] decide API context and use case
 - [ ] Create MongoDB database
 - [ ] integrate '.env' file and mongodb configuration and conect to database
 - [ ] create database schema and models
