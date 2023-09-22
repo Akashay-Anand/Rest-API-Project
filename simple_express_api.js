@@ -18,14 +18,10 @@ app.get('/api/:id?', (req, res) => {
     }
     else{
         const item = Data.find((item) => item.id === targetId);
-        // console.log(item);
-        // console.log(typeof(targetId));
-        // console.log(Data[item.id].id);
         if(item) res.send(item); // undefined == false
         else res.send(" id Not foundd");
     } 
     res.end();
-    
 });
 
 app.post('/api', (req, res) => {
@@ -43,54 +39,41 @@ app.post('/api', (req, res) => {
 app.put('/api/:id', (req, res) => {
     const targetId = parseInt(req.params.id); // default: string ; convert to integer
     const bodydata = req.body;
-    
-    if((bodydata['id'] && targetId)) { 
-        if(targetId &&targetId === bodydata['id']){
-            const item = Data.find((item) => item.id === targetId);
-            const ItemIndex = Data.findIndex((item) => item.id === parseInt(itemId));
-            if(item){
-                item.name = bodydata['name']?bodydata['name']:item.name;
-                item.age = bodydata['age']?bodydata['age']:item.age;
-                Data[ItemIndex] = item;
-                fs.writeFileSync('dataset.json', JSON.stringify(Data, null, 2));
-            } 
-            else res.send(" id Not foundd");
-        }else{
-            res.send("conflict: ID can not be null/multiple ;( Tip: id shoud be same or only provided at one location. i.e: either in url or body)");
+    if(bodydata.id){
+        if(targetId != bodydata.id){
+            res.send('provide some valid input; (Tip: id shoud be same or only provided at one location. i.e: either in url or body)');
+            res.end();
         }
-    }else if((!bodydata['id'] && !targetId)){
-        res.send("conflict: ID can not be null/multiple ;( Tip: id shoud be same or only provided at one location. i.e: either in url or body)");
     }
-    else{
-        targetId = targetId?targetId:bodydata["id"];
-        const item = Data.find((item) => item.id === targetId);
-        const ItemIndex = Data.findIndex((item) => item.id === parseInt(itemId));
-        if(item){
-            item.name = bodydata['name']?bodydata['name']:item.name;
-            item.age = bodydata['age']?bodydata['age']:item.age;
-            Data[ItemIndex] = item;
-            fs.writeFileSync('dataset.json', JSON.stringify(Data, null, 2));
-        } 
-        else res.send(" id Not foundd");
-
-    }
-    console.log(bodydata['id']);
-    console.log(targetId);
+    const item = Data.find((item) => item.id === targetId);
+    const ItemIndex = Data.findIndex((item) => item.id === parseInt(targetId));
+    if(item){
+        item.name = bodydata['name']?bodydata['name']:item.name;
+        item.age = bodydata['age']?bodydata['age']:item.age;
+        Data[ItemIndex] = item;
+        fs.writeFileSync('dataset.json', JSON.stringify(Data, null, 2));
+        res.send(Data);
+    } 
+    else res.send(" id Not foundd");
+    // console.log(targetId);
 
     res.end();
 });
 
-
 app.delete('/api/:id', (req, res) => {
     const targetId = req.params.id;
     const deletedItemIndex = Data.findIndex((item) => item.id === parseInt(targetId));
+    console.log(deletedItemIndex);
     if (deletedItemIndex === -1) {
         res.writeHead(404, { "Content-Type": "application/json" });
+        // res.send("Not Found"); //[Note - 01] error ; after using writeHead we should not use send
         res.end(JSON.stringify({ error: 'Item not found' }));
     } else {
         Data.splice(deletedItemIndex, 1);
-        fs.writeFile('dataset.json', JSON.stringify(Data, null, 2));
+        fs.writeFileSync('dataset.json', JSON.stringify(Data, null, 2));
+        res.send(`success: data with id-${targetId} is deleted`);
     }
+    res.end();
 })
 
 app.all('/api/:id?', (req, res) => {
@@ -118,6 +101,15 @@ app.listen(8080, (err) => {
 > - express.urlencoded() middleware to parse the form data. The { extended: true } option allows for parsing rich objects and arrays.
 */
 
+/*
+[Note-01]: 
+- If you use res.writeHead(), you are manually setting the response headers, so you should not use res.send(), res.json(), or similar high-level methods provided by your web framework. Instead, use res.end() to send the response body separately.
+
+- If you use res.send(), res.json(), or similar methods provided by your web framework, these methods will handle setting the appropriate headers for you. In this case, you should not use res.writeHead() to set headers separately because it can lead to conflicts and errors.
+
+- 
+
+*/
 
 /*
  > reference

@@ -52,3 +52,5 @@
 
 - well never know building api with using any framework is that much lengthy, well after working on **'simple_http_api.js'** I realize that... Kudos to people who build these modules/framework 🧑🏻‍💻✌🏻🤖
 
+- Now I have writen Simple API in both http (simple_http_api.js) and ExpressJS (simple_express_api.js) ;
+- after analyzing both files we can say that ExpressJS simplifies code complexity and improve readability.

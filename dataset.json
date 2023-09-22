@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "name": "Akashay Anand",
-    "age": 20
+    "name": "Anand",
+    "age": 21
   },
   {
     "id": 2,
@@ -11,8 +11,8 @@
   },
   {
     "id": 3,
-    "name": "Amit Patel",
-    "age": 32
+    "name": "Anand",
+    "age": 25
   },
   {
     "id": 4,
@@ -138,16 +138,5 @@
     "id": 28,
     "name": "Anjali Rana",
     "age": 33
-  },
-  {
-    "id": 29,
-    "name": "Vivek Joshi",
-    "age": 28
-  },
-  {
-    "id": 30,
-    "name": "Meenakshi Sharma",
-    "age": 27
   }
-
 ]
