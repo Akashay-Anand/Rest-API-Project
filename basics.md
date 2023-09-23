@@ -50,4 +50,9 @@ Send data in JSON (MOSTLY)
 > req.body
 > ned to use middleweare : app.use(express.json());
 > method should be POST
-> 
+
+////////////////////////////////
+
+# MongoDB 
+
+>

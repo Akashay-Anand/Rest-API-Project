@@ -22,7 +22,7 @@
 
 ## Stage 2: 
 - [x] decide API context and use case (decision Job related api)
-- [ ] Create project folders
+- [X] Create project folders
 - [ ] Create MongoDB database
 - [ ] integrate '.env' file and mongodb configuration and conect to database
 - [ ] create database schema and models
@@ -38,6 +38,26 @@
 ## Stage 4:
 - [ ] GUI if needed
 - [ ] deploy 
+
+<br/>
+<hr/>
+<br/>
+
+### Folder structure
+
+> files which are not part of this Project
+> - simple_http_api.js , simple_express_api.js , database.js , basics.md ...
+
+[ note ] apart from the above file, rest of the files and folder may contain code related to this project.
+
+> Folders details
+
+- config > contains configuration file. i.e: environment variables , .env , etc
+
+- routes > routes will contains all route path 
+
+- models > this will contain database model and schema
+
 
 # Documentation for Help
 
