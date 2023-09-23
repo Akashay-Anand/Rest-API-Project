@@ -23,8 +23,8 @@
 ## Stage 2: 
 - [x] decide API context and use case (decision Job related api)
 - [X] Create project folders
-- [ ] Create MongoDB database
-- [ ] integrate '.env' file and mongodb configuration and conect to database
+- [x] Create MongoDB database
+- [x] integrate '.env' file and mongodb configuration and conect to database
 - [ ] create database schema and models
 - [ ] perform CRUD operations on database
 - [ ] Build multiple endpoints 
@@ -58,6 +58,7 @@
 
 - models > this will contain database model and schema
 
+- controllers > holds resopnse for routes
 
 # Documentation for Help
 

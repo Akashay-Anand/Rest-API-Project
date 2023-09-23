@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/api', (req, res) => {
+// api is added by default
+router.get('/jobslist', (req, res) => {
     res.status(200).json({
         sucess: true,
         message : 'route is working'
