@@ -3,6 +3,15 @@ const fs = require('fs'); // [Note-02]
 const data = require('./dataset.json'); // import json file
 
 
+// const server1 = http.createServer((req, res) => {
+//     res.setHeader('Content-Type', 'application/json');
+//     res.setHeader("content-language", 'en');
+//     res.setHeader('X-Powered-By', 'NOdeJS');
+
+// });
+
+
+// CRUD operation //////////////////////////////////
 // [note-03]
 const server = http.createServer((req, res) => {
     const reqURL = req.url;
@@ -165,6 +174,8 @@ function deleteData(req, res) {
         });
     }
 }
+
+/////////////////////////////////////
 
 // this function will execute when the request method is not specified;
 function defaultHandler(req, res) { 

@@ -18,9 +18,11 @@
 - [x] create a same server using express
 - [x] Perform CRUD operations on express
 
+- [x] Completed 
 
 ## Stage 2: 
-- [ ] decide API context and use case
+- [x] decide API context and use case (decision Job related api)
+- [ ] Create project folders
 - [ ] Create MongoDB database
 - [ ] integrate '.env' file and mongodb configuration and conect to database
 - [ ] create database schema and models
@@ -28,14 +30,14 @@
 - [ ] Build multiple endpoints 
 
 ## Stage 3:
-- restructure code base
-- implement MVC file structure
-- !!!
-- !!!
+- [ ] restructure code base
+- [ ] implement MVC file structure
+- [ ] !!!
+- [ ] !!!
 
 ## Stage 4:
-- GUI if needed
-- deploy 
+- [ ] GUI if needed
+- [ ] deploy 
 
 # Documentation for Help
 

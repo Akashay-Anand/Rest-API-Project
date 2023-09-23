@@ -9,6 +9,7 @@ app.use(express.json());
 
 
 // CRUD operations
+////////////////////////////////
 app.get('/api/:id?', (req, res) => {
     const targetId = parseInt(req.params.id); // default: string ; convert to integer
     console.log(targetId); // NaN is false value
@@ -75,7 +76,9 @@ app.delete('/api/:id', (req, res) => {
     }
     res.end();
 })
+////////////////////////////////
 
+// this will execute if above routes will not get trigerred
 app.all('/api/:id?', (req, res) => {
     res.status(200);
     res.send("Api might not be available or you are invoking wrong url");

@@ -24,4 +24,30 @@ Use HTTP Methods
 Send data in JSON (MOSTLY)
 
 
+//////////////////////////////////////////////////
 
+# HTTP response Status Code
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+- 
+
+/////////////////////////////////
+
+# URL
+
+> req.params 
+> Url can have parameters
+> - http://localhost:8080/api/23
+>   route('/api/:id?',) // question mark indicates it is optional
+> - access taht parameters = const id = req.params.id; 
+
+> req.query
+> can have query
+> - http://localhost:8080/api/?name=node 
+> - route('/api',) //
+> - access that query = const qu = req.query;
+
+> req.body
+> ned to use middleweare : app.use(express.json());
+> method should be POST
+> 
