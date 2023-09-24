@@ -37,7 +37,9 @@ const jobSchema = new mongoose.Schema({
                 'Banking',
                 'Education/Training',
                 'Telecommunication',
-                'Others'
+                'Others',
+                "Marketing",
+                
             ],
             message : 'Please select correct options for industry.'
         }

@@ -1,3 +1,4 @@
+const { response } = require('express');
 const Job = require('../models/jobs');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
@@ -13,6 +14,29 @@ exports.getJoblist = async (req,res,next) => {
         results : jobs.length,
         data : jobs 
     });
+}
+
+// get specific job by id or slug => 'api/jobs/:id
+exports.getUniqueJob = async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        return res.status(400).json({
+            success: false,
+            message: 'Invalid job ID format',
+        });
+    }
+    
+    
+    const job = await Job.find({$and: [{_id: req.params.id}, {slug: req.params.slug}]});
+
+    if (!job || job.length === 0) {
+        return next(new ErrorHandler('Job not found', 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        data: job
+    });
+
 }
 
 // create a new job  => /api/job/new

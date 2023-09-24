@@ -33,18 +33,21 @@
 - [x] Build multiple endpoints 
 
 ## Stage 3:
-- [ ] restructure code base
-- [ ] implement MVC file structure
-- [ ] !!!
-- [ ] !!!
+- [x] restructure code base
+- [x] create documentation
+- [ ] host on live server.
+- [ ] Wrapup phase-1 development. next phase will start latter
 
-## Stage 4:
-- [ ] GUI if needed
-- [ ] deploy 
+
+
+
+
+
 
 <br/>
 <hr/>
 <br/>
+
 
 ### Folder structure
 
@@ -62,6 +65,8 @@
 - models > this will contain database model and schema
 
 - controllers > holds resopnse for routes
+
+
 
 # Documentation for Help
 

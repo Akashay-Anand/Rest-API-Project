@@ -5,13 +5,16 @@ const router = express.Router();
 const {getJoblist,
     createJob,
     updateJob,
-    deleteJob
+    deleteJob,
+    getUniqueJob
 } = require('../controllers/jobController');
 
 // exact route is "api/joblist", but first part is handled in server.js file.
-router.get('/job', getJoblist);
+// router.get('/job', getJoblist);
 router.get('/job/list', getJoblist);
 // router.route('/joblist').get(getJoblist);
+
+router.route('/job/:id/:slug').get(getUniqueJob);
 
 router.route('/job/createjob').post(createJob);
 
