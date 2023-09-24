@@ -1,3 +1,5 @@
+const Job = require('../models/jobs');
+
 
 // get all job listings => 'api/jobslist'
 exports.getJoblist = (req,res,next) => {
@@ -11,5 +13,16 @@ exports.getJoblist = (req,res,next) => {
         User: req.user,
         Method: req.method,
         MyMethod: req.myMethod
+    });
+}
+
+// create a new job  => /api/job/new
+exports.createJob = async (req, res, next) => {
+    const bodydata = req.body;
+    const job = await Job.create(bodydata);
+    res.status(200).json({
+        success: true,
+        message : 'job was created successfully',
+        values : job
     });
 }

@@ -26,7 +26,9 @@
 - [x] follow MVC design pattern
 - [x] Create MongoDB database
 - [x] integrate '.env' file and mongodb configuration and conect to database
-- [ ] create database schema and models
+- [x] create database schema and models
+  - - [x] implemented and tested job schema on mongo atlas db(online);
+  - - [ ] implemented and teste User db
 - [ ] perform CRUD operations on database
 - [ ] Build multiple endpoints 
 

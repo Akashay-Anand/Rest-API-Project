@@ -8,7 +8,8 @@ const connectDB = () => {
         // useCreateIndex: true,
     })
     .then((con)=>{
-        console.log(`Connected to mongodb database: ${con.connection.host}`);
+        console.log('Mongoose Database Connection: Success');
+        // console.log(`Connected to mongodb database: ${con.connection.host}`);
     })
     .catch(err => console.log(err));
 } 
