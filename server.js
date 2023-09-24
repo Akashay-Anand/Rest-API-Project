@@ -8,13 +8,6 @@ console.log(port);
 
 
 // middleware
-// const middleware = (req, res, next) => {
-//     console.log('Hello from middleware...');
-//     req.user = "Akashay Anand"; // manipulated or add data 
-//     req.myMethod = req.method; // add property to request.
-//     next();
-// }
-// app.use(middleware);
 
 // Import Database
 const connectDB = require('./config/database');

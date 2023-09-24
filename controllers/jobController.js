@@ -52,26 +52,6 @@ exports.createJob = async (req, res, next) => {
 
 // Update a job => /api/job/update/:id
 exports.updateJob = async (req, res, next) => {
-    // let job = await Job.findById(req.params.id);
-    // console.log(job);
-    // if(!job) {
-    //     return res.status(404).json({
-    //         success : false,
-    //         message : 'Job not found',
-    //     });
-    // }
-    // else{
-    // job  = await Job.findByIdAndUpdate(req.params.id, req.body, {
-    //     new : true,
-    //     runValidators : true
-
-    // });
-    // res.status(200).json({
-    //     success : true,
-    //     message : 'Job was updated successfully',
-    //     data : job
-    // });
-    // }
 
     try {
         if (!ObjectId.isValid(req.params.id)) {

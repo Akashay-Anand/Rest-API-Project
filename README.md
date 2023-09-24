@@ -28,20 +28,31 @@
 - [x] integrate '.env' file and mongodb configuration and conect to database
 - [x] create database schema and models
   - - [x] implemented and tested job schema on mongo atlas db(online);
-  - - [ ] implemented and teste User db
 - [x] perform CRUD operations on database
 - [x] Build multiple endpoints 
 
 ## Stage 3:
 - [x] restructure code base
 - [x] create documentation
-- [ ] host on live server.
-- [ ] Wrapup phase-1 development. next phase will start latter
+- [x] host on live server.
+- [x] Wrapup phase-1 development. next phase will start latter
 
 
 
 
+<br/>
+<hr/>
+<br/>
 
+# Deployment and Documentation
+
+> Use the live link to send the api request to the server
+> - if you are testing it on local environment then this would be the root address for api requests
+> - Live Link: https://rest-api-project-production.up.railway.app
+
+> check out the documentation to know more about the Endpoints in this api
+> note - documentation is of production env. so whatever api request link is there, should work fine
+> - https://documenter.getpostman.com/view/29937505/2s9YJW5RP7 
 
 
 <br/>
