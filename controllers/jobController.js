@@ -1,5 +1,6 @@
 const Job = require('../models/jobs');
-
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 // get all job listings => 'api/jobs'
 // get all job listings => 'api/jobs/list'
@@ -27,21 +28,57 @@ exports.createJob = async (req, res, next) => {
 
 // Update a job => /api/job/update/:id
 exports.updateJob = async (req, res, next) => {
-    let job = await Job.findById(req.params.id);
-    console.log(job);
-    if(!job) {
-        res.status(404).json({
-            success : false,
-            message : 'Job not found',
+    // let job = await Job.findById(req.params.id);
+    // console.log(job);
+    // if(!job) {
+    //     return res.status(404).json({
+    //         success : false,
+    //         message : 'Job not found',
+    //     });
+    // }
+    // else{
+    // job  = await Job.findByIdAndUpdate(req.params.id, req.body, {
+    //     new : true,
+    //     runValidators : true
+
+    // });
+    // res.status(200).json({
+    //     success : true,
+    //     message : 'Job was updated successfully',
+    //     data : job
+    // });
+    // }
+
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid job ID format',
+            });
+        }
+        let job = await Job.findById(req.params.id);
+        console.log(job);
+        if (!job) {
+            return res.status(404).json({
+                success: false,
+                message: 'Job not found',
+            });
+        } else {
+            job = await Job.findByIdAndUpdate(req.params.id, req.body, {
+                new: true,
+                runValidators: true
+            });
+            res.status(200).json({
+                success: true,
+                message: 'Job was updated successfully',
+                data: job
+            });
+        }
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({
+            success: false,
+            message: 'An error occurred while updating the job',
         });
     }
-    job  = await Job.findByIdAndUpdate(req.params.id, req.body, {
-        new : true,
-        runValidators : false
-    });
-    res.status(200).json({
-        success : true,
-        message : 'Job was updated successfully',
-        data : job
-    });
 }
