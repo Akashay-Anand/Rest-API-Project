@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const slugify = require('slugify');
 
 const jobSchema = new mongoose.Schema({
     title : {
@@ -8,6 +9,7 @@ const jobSchema = new mongoose.Schema({
         trim : true,
         maxlength : [255, 'Job title can not exceed 255 characters.']
     },
+    slug : String,
     description : {
         type : String,
         required : [true, 'Please enter Job description.'],
@@ -110,5 +112,13 @@ const jobSchema = new mongoose.Schema({
 
 });
 
+// creating job Slug before savinf
+// why not arrow function: have to use this keyword.
+jobSchema.pre('save', function(next) {
+    // creating slug 
+    this.slug = slugify(this.title, {lower: true});
+
+    next();
+})
 
 module.exports = mongoose.model('Job',jobSchema);
