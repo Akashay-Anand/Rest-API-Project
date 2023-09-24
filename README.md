@@ -29,8 +29,8 @@
 - [x] create database schema and models
   - - [x] implemented and tested job schema on mongo atlas db(online);
   - - [ ] implemented and teste User db
-- [ ] perform CRUD operations on database
-- [ ] Build multiple endpoints 
+- [x] perform CRUD operations on database
+- [x] Build multiple endpoints 
 
 ## Stage 3:
 - [ ] restructure code base

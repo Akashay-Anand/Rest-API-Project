@@ -4,7 +4,8 @@ const router = express.Router();
 // Import jobs controller method
 const {getJoblist,
     createJob,
-    updateJob
+    updateJob,
+    deleteJob
 } = require('../controllers/jobController');
 
 // exact route is "api/joblist", but first part is handled in server.js file.
@@ -15,5 +16,7 @@ router.get('/job/list', getJoblist);
 router.route('/job/createjob').post(createJob);
 
 router.route('/job/update/:id').put(updateJob);
+
+router.route('/job/delete/:id').delete(deleteJob);
 
 module.exports = router;

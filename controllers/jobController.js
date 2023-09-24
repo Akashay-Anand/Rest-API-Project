@@ -57,7 +57,7 @@ exports.updateJob = async (req, res, next) => {
             });
         }
         let job = await Job.findById(req.params.id);
-        console.log(job);
+        // console.log(job);
         if (!job) {
             return res.status(404).json({
                 success: false,
@@ -75,10 +75,37 @@ exports.updateJob = async (req, res, next) => {
             });
         }
     } catch (error) {
-        console.error(error); // Log the error for debugging
+        // console.error(error); // Log the error for debugging
         res.status(500).json({
             success: false,
             message: 'An error occurred while updating the job',
         });
     }
 }
+
+
+// Delete a job from the database => api/job/delete/:id
+exports.deleteJob = async (req, res, next) => {
+    
+    // handle error / null /undefined
+    if (!ObjectId.isValid(req.params.id)) {
+        return res.status(400).json({
+            success: false,
+            message: 'Invalid job ID format',
+        });
+    }
+    let job = await Job.findById(req.params.id);
+    if (!job) {
+        return res.status(404).json({
+            success: false,
+            message: 'Job not found',
+        });
+    }
+
+    job = await Job.findByIdAndDelete(req.params.id)
+
+    res.status(200).json({
+        success : true,
+        message : "job deleted successfully"
+    })
+};
