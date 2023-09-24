@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-// api is added by default
-router.get('/jobslist', (req, res) => {
-    res.status(200).json({
-        sucess: true,
-        message : 'route is working'
-    })
-});
+// Import jobs controller method
+const {getJoblist} = require('../controllers/jobController');
+
+// exact route is "api/joblist", but first part is handled in server.js file.
+router.get('/joblist', getJoblist);
+// router.route('/joblist').get(getJoblist);
 
 module.exports = router;

@@ -23,6 +23,40 @@ Use HTTP Methods
 
 Send data in JSON (MOSTLY)
 
+////////////////////////////////////
+
+# Middleware
+- just a function that is available everywhere in project.
+- if a file contains middleware, whenever a request is made the middleware always gets extecuted (erespective of request method, );
+- it can we use to manipulate incoming requests object before reaching to routes to use,
+
+
+// example
+> route & middleware
+```js
+// middleware
+const middleware = (req, res, next) => {
+    console.log('Hello from middleware...');
+    req.user = "Akashay Anand"; // manipulated or add data 
+    req.myMethod = req.method;
+    next();
+}
+app.use(middleware); // now middleware is active for all requests
+
+// route
+app.get('/', (req, res) => {
+    console.log("Name: " + req.user);
+    res.status(200).json({
+        success: true,
+        User: req.user,
+        Method: req.method,
+        Method: req.myMethod
+    });
+    res.end();
+});
+
+```
+>
 
 //////////////////////////////////////////////////
 

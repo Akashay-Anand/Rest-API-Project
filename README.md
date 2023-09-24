@@ -23,6 +23,7 @@
 ## Stage 2: 
 - [x] decide API context and use case (decision Job related api)
 - [X] Create project folders
+- [x] follow MVC design pattern
 - [x] Create MongoDB database
 - [x] integrate '.env' file and mongodb configuration and conect to database
 - [ ] create database schema and models
