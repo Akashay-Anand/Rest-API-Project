@@ -6,43 +6,10 @@
 
 > the entire process will be devided into multiple stages of development. The commits will also be ordered by them.
 
-
-<br/>
-<hr/>
-<br/>
-
-
-## Stage 1:
-- [X] Inital setup & initialization project with npm and modules 
-- [X] create a basic api server with one or two end points without using express
-- [x] create a same server using express
-- [x] Perform CRUD operations on express
-
-- [x] Completed 
-
-## Stage 2: 
-- [x] decide API context and use case (decision Job related api)
-- [X] Create project folders
-- [x] follow MVC design pattern
-- [x] Create MongoDB database
-- [x] integrate '.env' file and mongodb configuration and conect to database
-- [x] create database schema and models
-  - - [x] implemented and tested job schema on mongo atlas db(online);
-- [x] perform CRUD operations on database
-- [x] Build multiple endpoints 
-
-## Stage 3:
-- [x] restructure code base
-- [x] create documentation
-- [x] host on live server.
-- [x] Wrapup phase-1 development. next phase will start latter
-
-
-
-
-<br/>
-<hr/>
-<br/>
+## Features
+- Follows MVC Structure
+- Uses MongoDB Atlas, NodeJS
+- ...
 
 # Deployment and Documentation
 
@@ -54,6 +21,101 @@
 > note - documentation is of production env. so whatever api request link is there, should work fine
 > - https://documenter.getpostman.com/view/29937505/2s9YJW5RP7 
 
+<br/>
+<hr/>
+<br/>
+
+## Development Phase
+> ### Phase - 01 📈
+
+- #### Stage 1:
+- [X] Inital setup & initialization project with npm and modules 
+- [X] create a basic api server with one or two end points without using express
+- [x] create a same server using express
+- [x] Perform CRUD operations on express
+
+- [x] Completed 
+
+- #### Stage 2: 
+- [x] decide API context and use case (decision Job related api)
+- [X] Create project folders
+- [x] follow MVC design pattern
+- [x] Create MongoDB database
+- [x] integrate '.env' file and mongodb configuration and conect to database
+- [x] create database schema and models
+  - - [x] implemented and tested job schema on mongo atlas db(online);
+- [x] perform CRUD operations on database
+- [x] Build multiple endpoints 
+
+- #### Stage 3:
+- [x] restructure code base
+- [x] create documentation
+- [x] host on live server.
+- [x] Wrapup phase-1 development. next phase will start latter
+
+- [x] restructure code base and Readme
+
+> ### Phase 02 📈
+
+
+
+<br/>
+<hr/>
+<br/>
+
+## Running the Projec
+
+- steps to follow
+
+> Clone the repository
+
+```bash
+git clone https://github.com/Akashay-Anand/Rest-API-Project.git
+```
+
+> move into the repository
+```bash
+cd "Rest-API-Project"
+```
+
+> [Note] Do setup environment variables as per your local configuration/database
+```bash
+// .env example file
+
+PORT = 8080
+dbDriver = http://localhost:8080 // if using Atlas online replace it here
+add other variables if needed
+``` 
+
+> Install dependencies
+```bash
+npm install
+```
+
+> start server // like in this project server.js is our executable file
+```bash
+nomemon server.js
+```
+
+> Now your server may start working properly. So we you can test it through its endpoint
+>
+> either you can use online platform or tools like postman for this 
+>
+> for endpoints checkout the documentation.
+- https://documenter.getpostman.com/view/29937505/2s9YJW5RP7 
+
+## Dependencies
+
+```bash
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.2",
+    "nodemon": "^3.0.1",
+    "slugify": "^1.6.6",
+    "validator": "^13.11.0"
+  }
+```
 
 <br/>
 <hr/>
@@ -96,3 +158,7 @@
 
 - Now I have writen Simple API in both http (simple_http_api.js) and ExpressJS (simple_express_api.js) ;
 - after analyzing both files we can say that ExpressJS simplifies code complexity and improve readability.
+
+
+// issue to resolve
+// anyone can add data init big issues

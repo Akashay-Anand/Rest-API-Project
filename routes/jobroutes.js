@@ -9,8 +9,8 @@ const {getJoblist,
     getUniqueJob
 } = require('../controllers/jobController');
 
-// exact route is "api/joblist", but first part is handled in server.js file.
-// router.get('/job', getJoblist);
+// exact route is "api/job/list", but first part is handled in server.js file.
+
 router.get('/job/list', getJoblist);
 // router.route('/joblist').get(getJoblist);
 

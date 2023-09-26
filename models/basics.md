@@ -42,3 +42,7 @@ Accessibility: Simplified, hyphen-separated slugs are easier to share verbally o
 > **Slugify** is process of transforming a string, typically a title or a piece of text, into a format suitable for use in a URL slug. The purpose of slugifying a string is to create a URL-friendly version of it by removing spaces, special characters, and diacritics, and converting the text to lowercase.
 
 
+## Aggregation 
+
+- https://www.mongodb.com/docs/manual/aggregation/
+- 

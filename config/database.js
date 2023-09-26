@@ -5,11 +5,9 @@ const connectDB = () => {
     mongoose.connect(db_url,{
         useNewUrlParser: true,
         useUnifiedTopology: true
-        // useCreateIndex: true,
     })
     .then((con)=>{
         console.log('Mongoose Database Connection: Success');
-        // console.log(`Connected to mongodb database: ${con.connection.host}`);
     })
     .catch(err => console.log(err));
 } 

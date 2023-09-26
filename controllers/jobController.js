@@ -3,8 +3,8 @@ const Job = require('../models/jobs');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
-// get all job listings => 'api/jobs'
-// get all job listings => 'api/jobs/list'
+
+// get all job listings => 'api/job/list'
 exports.getJoblist = async (req,res,next) => {
 
     const jobs = await Job.find();
@@ -16,7 +16,8 @@ exports.getJoblist = async (req,res,next) => {
     });
 }
 
-// get specific job by id or slug => 'api/jobs/:id
+// check this route???????????????????????????????????????????????????????????????????
+// get specific job by id or slug => 'api/job/:id/:slug'
 exports.getUniqueJob = async (req, res, next) => {
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json({
@@ -24,7 +25,6 @@ exports.getUniqueJob = async (req, res, next) => {
             message: 'Invalid job ID format',
         });
     }
-    
     
     const job = await Job.find({$and: [{_id: req.params.id}, {slug: req.params.slug}]});
 
@@ -91,7 +91,7 @@ exports.updateJob = async (req, res, next) => {
 // Delete a job from the database => api/job/delete/:id
 exports.deleteJob = async (req, res, next) => {
     
-    // handle error / null /undefined
+    // handle ID - error / null /undefined 
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json({
             success: false,
@@ -113,3 +113,8 @@ exports.deleteJob = async (req, res, next) => {
         message : "job deleted successfully"
     })
 };
+
+// get stats about a topic => api/job/stats/:keyword
+// exports.jobstats = async (req, res,next) => {
+//     const keyword = await Job.aggregate(req.params.keyword
+// }

@@ -28,7 +28,7 @@ app.get('/',(req, res) =>{
     res.end();
 })
 
-
+// listen to port
 
 app.listen(port, (err)=>{
     console.log(`server is listening on ${port}`);
