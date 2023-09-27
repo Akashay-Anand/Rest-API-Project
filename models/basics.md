@@ -43,6 +43,13 @@ Accessibility: Simplified, hyphen-separated slugs are easier to share verbally o
 
 
 ## Aggregation 
-
 - https://www.mongodb.com/docs/manual/aggregation/
-- 
+
+> Aggregation refers to the process of collecting and summarizing data or information from multiple sources into a single representation. It is commonly used in various fields, including data analysis, statistics, and database management. 
+
+> The goal of aggregation is to condense and simplify data while preserving essential information for analysis or reporting purposes. 
+
+> MongoDB provides a powerful aggregation framework that allows you to process and manipulate data in various ways, including filtering, grouping, sorting, and performing complex calculations. It is a flexible and expressive way to query and analyze data within MongoDB.
+
+> Common stages include $match, $group, $sort, $project, $unwind, and more.
+

@@ -114,7 +114,36 @@ exports.deleteJob = async (req, res, next) => {
     })
 };
 
-// get stats about a topic => api/job/stats/:keyword
-// exports.jobstats = async (req, res,next) => {
-//     const keyword = await Job.aggregate(req.params.keyword
+// get stats about a topic => api/jobstats/:keyword
+// exports.jobStats = async (req, res, next) => {
+//     const statics = await Job.aggregate([
+//         {
+//             $match : {$text : {$search : "\""+req.params.keyword+"\"",}}
+//         },
+//         {
+//             $group : {
+//                 _id : null,
+//                 avgSalary : {$avg : {$salary}}
+//             }
+//         }
+//     ]);
+
+//     if(statics.length === 0) 
+//     {
+//         res.status(200).json({ 
+//             success : false,
+//             message : "No statics found for the keyword "
+//         });
+//     }
+//     res.status(200).json({
+//         success : true,
+//         data: "HEllo statics"
+//     });
 // }
+
+/* Question
+
+> waht are these two functions
+(req, res, next) => {}
+(req, res) => {}
+*/

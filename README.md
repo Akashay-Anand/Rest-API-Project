@@ -21,6 +21,7 @@
 > note - documentation is of production env. so whatever api request link is there, should work fine
 > - https://documenter.getpostman.com/view/29937505/2s9YJW5RP7 
 
+
 <br/>
 <hr/>
 <br/>
@@ -57,6 +58,10 @@
 
 > ### Phase 02 📈
 
+- #### Stage 2.1
+- [ ] Working on Aggregation concept
+- [ ] Error handling 
+-- [ ] error handling classes
 
 
 <br/>

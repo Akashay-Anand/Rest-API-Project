@@ -22,4 +22,6 @@ router.route('/job/update/:id').put(updateJob);
 
 router.route('/job/delete/:id').delete(deleteJob);
 
+// router.route('/jobstats/:keyword').get(jobStats);
+
 module.exports = router;
