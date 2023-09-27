@@ -60,7 +60,7 @@
 
 - #### Stage 2.1
 - [ ] Working on Aggregation concept
-- [ ] Error handling 
+- [x] Error handling 
 -- [ ] error handling classes
 
 
