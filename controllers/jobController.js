@@ -2,6 +2,7 @@ const { response } = require('express');
 const Job = require('../models/jobs');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
+const ErrorHandler = require('../utils/errorHandler');
 
 
 // get all job listings => 'api/job/list'
@@ -16,7 +17,6 @@ exports.getJoblist = async (req,res,next) => {
     });
 }
 
-// check this route???????????????????????????????????????????????????????????????????
 // get specific job by id or slug => 'api/job/:id/:slug'
 exports.getUniqueJob = async (req, res, next) => {
     if (!ObjectId.isValid(req.params.id)) {
@@ -63,10 +63,11 @@ exports.updateJob = async (req, res, next) => {
         let job = await Job.findById(req.params.id);
         // console.log(job);
         if (!job) {
-            return res.status(404).json({
-                success: false,
-                message: 'Job not found',
-            });
+            return next(new ErrorHandler("Hello Anand", 404));
+            // return res.status(404).json({
+            //     success: false,
+            //     message: 'Job not found',
+            // });
         } else {
             job = await Job.findByIdAndUpdate(req.params.id, req.body, {
                 new: true,
@@ -82,7 +83,7 @@ exports.updateJob = async (req, res, next) => {
         // console.error(error); // Log the error for debugging
         res.status(500).json({
             success: false,
-            message: 'An error occurred while updating the job',
+            message: 'An error occurred while updating the job....',
         });
     }
 }
@@ -93,10 +94,11 @@ exports.deleteJob = async (req, res, next) => {
     
     // handle ID - error / null /undefined 
     if (!ObjectId.isValid(req.params.id)) {
-        return res.status(400).json({
-            success: false,
-            message: 'Invalid job ID format',
-        });
+        return next(new ErrorHandler('Invalid job Anand ID format',400));
+        // return res.status(400).json({
+        //     success: false,
+        //     message: 'Invalid job ID format',
+        // });
     }
     let job = await Job.findById(req.params.id);
     if (!job) {

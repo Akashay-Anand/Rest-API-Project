@@ -1,24 +1,26 @@
 const express = require('express');
 const app = express();
-
-// import ev
+const errorMiddleware = require('./middlewares/errors');
 require('dotenv').config({path: './config/.env'});
+
 const port = process.env.PORT || 8080;
 console.log(port);
-
-
-// middleware
 
 // Import Database
 const connectDB = require('./config/database');
 connectDB();
 
-// body parser
+// middleware
+
+    // body parser
 app.use(express.json());
 
-// importing routes
+    // importing routes
 const jobs = require('./routes/jobroutes');
 app.use('/api',jobs); 
+
+    //Error middleware
+app.use(errorMiddleware); 
 
 // root address
 app.get('/',(req, res) =>{

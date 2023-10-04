@@ -5,7 +5,6 @@ class ErrorHandler extends Error {
 
         Error.captureStackTrace(this, this.construct);
     }
-
 }
 
 module.exports = ErrorHandler;
