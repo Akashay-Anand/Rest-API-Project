@@ -3,10 +3,11 @@ const Job = require('../models/jobs');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 const ErrorHandler = require('../utils/errorHandler');
+const catchAsyncError = require('../middlewares/catchAsyncError');
 
 
 // get all job listings => 'api/job/list'
-exports.getJoblist = async (req,res,next) => {
+exports.getJoblist = catchAsyncError( async (req,res,next) => {
 
     const jobs = await Job.find();
 
@@ -15,10 +16,10 @@ exports.getJoblist = async (req,res,next) => {
         results : jobs.length,
         data : jobs 
     });
-}
+});
 
 // get specific job by id or slug => 'api/job/:id/:slug'
-exports.getUniqueJob = async (req, res, next) => {
+exports.getUniqueJob = catchAsyncError( async (req, res, next) => {
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json({
             success: false,
@@ -37,10 +38,10 @@ exports.getUniqueJob = async (req, res, next) => {
         data: job
     });
 
-}
+});
 
 // create a new job  => /api/job/new
-exports.createJob = async (req, res, next) => {
+exports.createJob = catchAsyncError( async (req, res, next) => {
     const bodydata = req.body;
     const job = await Job.create(bodydata);
     res.status(200).json({
@@ -48,18 +49,19 @@ exports.createJob = async (req, res, next) => {
         message : 'job was created successfully',
         values : job
     });
-}
+});
 
 // Update a job => /api/job/update/:id
-exports.updateJob = async (req, res, next) => {
+exports.updateJob = catchAsyncError( async (req, res, next) => {
 
-    try {
-        if (!ObjectId.isValid(req.params.id)) {
-            return res.status(400).json({
-                success: false,
-                message: 'Invalid job ID format',
-            });
-        }
+    // no need of try-catch if you are using catchAsyncError()
+    // try {
+    //     if (!ObjectId.isValid(req.params.id)) {
+    //         return res.status(400).json({
+    //             success: false,
+    //             message: 'Invalid job ID format',
+    //         });
+    //     }
         let job = await Job.findById(req.params.id);
         // console.log(job);
         if (!job) {
@@ -79,18 +81,18 @@ exports.updateJob = async (req, res, next) => {
                 data: job
             });
         }
-    } catch (error) {
-        // console.error(error); // Log the error for debugging
-        res.status(500).json({
-            success: false,
-            message: 'An error occurred while updating the job....',
-        });
-    }
-}
+    // } catch (error) {
+    //     // console.error(error); // Log the error for debugging
+    //     res.status(500).json({
+    //         success: false,
+    //         message: 'An error occurred while updating the job....',
+    //     });
+    // }
+})
 
 
 // Delete a job from the database => api/job/delete/:id
-exports.deleteJob = async (req, res, next) => {
+exports.deleteJob = catchAsyncError( async (req, res, next) => {
     
     // handle ID - error / null /undefined 
     if (!ObjectId.isValid(req.params.id)) {
@@ -114,7 +116,7 @@ exports.deleteJob = async (req, res, next) => {
         success : true,
         message : "job deleted successfully"
     })
-};
+});
 
 // get stats about a topic => api/jobstats/:keyword
 // exports.jobStats = async (req, res, next) => {
