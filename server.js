@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const errorMiddleware = require('./middlewares/errors');
+const errorHandler = require('./utils/errorHandler')
 require('dotenv').config({path: './config/.env'});
 
 // uncaught exceptions
 process.on('uncaughtException', err => {
     console.log(`Error: ${err.message}`);
     console.log(`closing due to uncaught exception`);
-    process.exit(1);
+    process.exit(1);  
 })
 
 const port = process.env.PORT || 8080;
@@ -25,6 +26,11 @@ app.use(express.json());
     // importing routes
 const jobs = require('./routes/jobroutes');
 app.use('/api',jobs); 
+
+    // handle wrong routes
+    app.get( `*`, (req, res, next) => {
+        next(new errorHandler(`${req.originalUrl} "Roue Not Found"`,404 ))
+    }) 
 
     //Error middleware
 app.use(errorMiddleware); 
@@ -52,7 +58,7 @@ process.on('unhandledRejection',err=>{
     })
 });
 
-console.log(HelloAan)
+// console.log(HelloAan) // 'helloAnand' is not define so this will create error
 
 /*
 In JavaScript, Promises are used for handling asynchronous operations. Promises have two main states: "fulfilled" (resolved) and "rejected" (failed). When a Promise is rejected, it typically means that an error occurred during the execution of an asynchronous task.

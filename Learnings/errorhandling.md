@@ -24,3 +24,49 @@ if (!job || job.length === 0) {
 }
 
 ```
+
+////////////////////////////////////////////////////////////////////////////////
+
+## Types of error to handle
+
+### uncaught exceptions
+```js
+
+process.on('uncaughtException', err => {
+    console.log(`Error: ${err.message}`);
+    console.log(`closing due to uncaught exception`);
+    process.exit(1);  
+})
+
+console.log(xyz) // 'xyz' is not define so this will create uncaughtException. ; this is handaled above
+```
+
+### handle unhandled promises rejection
+```js
+
+process.on('unhandledRejection',err=>{
+    console.log('Error: ' + err.message);
+    console.log(`shutting down the server`);
+    live.close(()=>{
+        process.exit(1);
+    })
+});
+
+```
+
+## errors while working with MongoDB
+
+### if id is not in correct format ( castError )
+
+```js
+// Error: Cast to ObjectId failed for value
+if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({
+        success: false,
+        message: 'Invalid job ID format',
+    });
+}
+
+// this error can also be handled through async error handler function
+
+```

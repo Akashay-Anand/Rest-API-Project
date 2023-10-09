@@ -4,6 +4,15 @@ module.exports = (err, req, res, next) => {
     if(process.env.NODE_ENV === 'production'){
         let error = {...err}; // [Note - 01]
         error.message = err.message;
+
+        // Mongo ID error ; 
+        if(error.name === 'CastError'){
+            res.status(error.statusCode).json({
+                success: false,
+                message: errr.message
+            })
+        }
+
         res.status(err.statusCode).json({
             success: false,
             message: error.message || 'Something went wrong with server in production'
@@ -17,7 +26,7 @@ module.exports = (err, req, res, next) => {
             error: err,
             errMessage: err.message,
             stack : err.stack
-        })
+        } )
         
     }else{
         err.message = err.message || 'something wrong'

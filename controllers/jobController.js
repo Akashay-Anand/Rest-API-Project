@@ -4,12 +4,16 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError = require('../middlewares/catchAsyncError');
-
+const API_Filters = require('../utils/apiFilters');
 
 // get all job listings => 'api/job/list'
 exports.getJoblist = catchAsyncError( async (req,res,next) => {
 
-    const jobs = await Job.find();
+    const apiFilters = new API_Filters(Job.find(), req.query);
+    apiFilters.filter();
+    // const jobs = await Job.find();
+    const jobs = await apiFilters.query;
+    
 
     res.status(200).json({
         sucess: true,

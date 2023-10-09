@@ -9,7 +9,10 @@
 ## Features
 - Follows MVC Structure
 - Uses MongoDB Atlas, NodeJS
-- ...
+- CRUD implementation
+- Global error handling
+- Filtering through query parameters
+
 
 # Deployment and Documentation
 
@@ -62,7 +65,9 @@
 - [ ] Working on Aggregation concept
 - [x] Error handling 
 -- [x] error handling classes
-
+- [x] Advance filterning Features
+  -- Now can search job through query parameters  
+- [ ] 
 
 <br/>
 <hr/>
@@ -144,7 +149,7 @@ nomemon server.js
 
 - controllers > holds resopnse for routes
 
-
+- Utils > contains supportive methods/features 
 
 # Documentation for Help
 
@@ -159,7 +164,7 @@ nomemon server.js
 
 ## Remarks By Anand
 
-- well never know building api with using any framework is that much lengthy, well after working on **'simple_http_api.js'** I realize that... Kudos to people who build these modules/framework 🧑🏻‍💻✌🏻🤖
+- well never know building api without using any framework is that much lengthy, well after working on **'simple_http_api.js'** I realize that... Kudos to people who build these modules/framework 🧑🏻‍💻✌🏻🤖
 
 - Now I have writen Simple API in both http (simple_http_api.js) and ExpressJS (simple_express_api.js) ;
 - after analyzing both files we can say that ExpressJS simplifies code complexity and improve readability.
