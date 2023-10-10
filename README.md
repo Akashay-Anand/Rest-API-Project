@@ -12,6 +12,8 @@
 - CRUD implementation
 - Global error handling
 - Filtering through query parameters
+- Sorting through query parameters
+- limiting fields through query parameters
 
 
 # Deployment and Documentation
