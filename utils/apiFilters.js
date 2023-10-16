@@ -9,7 +9,7 @@ class API_Filters{
         const queryCopy = {...this.queryStr};
 
         // sort is not a json parameter, so we have to take it out
-        const remove = ['sort','field'];
+        const remove = ['sort','field','q','limit','page'];
         remove.forEach(element => delete queryCopy[element]);
 
         // Advance filter usinf lt, lte, gt, gte
@@ -42,16 +42,26 @@ class API_Filters{
         return this;
     }
 
-    // this is also working
-    // showFields(){
-    //     // console.log(this.query)
-    //     if(this.queryStr.field){
-    //         // const field = this.queryStr.field.split(',').join(' ');
-    //         this.query = this.query.select(this.queryStr.field);
-    //         // console.log(this.query)
-    //     }
-    //     return this;
-    // }
+    searchbyQuery(){
+        if(this.queryStr.q){
+            const qu = this.queryStr.q.split('-').join(' ');
+            this.query = this.query.find({$text: {$search: "\"" + qu +"\""}});
+        }
+        return this;
+    }
+
+    // paginations : ristrict how mayny items would be shown per pages
+
+    paginations(){
+       const page = parseInt(this.queryStr.page , 10) || 1;
+       const limit = parseInt(this.queryStr.limit , 10) || 10;
+
+       const skipResults = (page-1) * limit;
+
+        this.query = this.query.skip(skipResults).limit(limit);
+
+        return this;
+    }
 }
 
 module.exports = API_Filters;

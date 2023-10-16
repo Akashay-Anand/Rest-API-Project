@@ -14,6 +14,8 @@
 - Filtering through query parameters
 - Sorting through query parameters
 - limiting fields through query parameters
+- Text Indexe on title and description
+- implemented pagination
 
 
 # Deployment and Documentation
@@ -69,7 +71,9 @@
 -- [x] error handling classes
 - [x] Advance filterning Features
   -- Now can search job through query parameters  
-- [ ] 
+  -- Can sort dson responses using query parameters
+  -- Can filter to show only needed parameters
+  -- pagination 
 
 <br/>
 <hr/>
